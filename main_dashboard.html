@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .collapse-content {
+            display: none;
+        }
+
+        .collapse:hover .collapse-content,
+        .collapse:focus-within .collapse-content {
+            display: block;
+        }
+
+        .section-view.show {
+            display: block;
+        }
+
+
+        .section-view {
+            display: none;
+
+        }
+    </style>
+</head>
+
+
+
+<!-- Side Panel -->
+<div id="side-panel" class="bg-gray-800 text-white w-64 p-4 space-y-4 fixed h-full">
+    <h1 class="text-2xl font-bold">Dashboard</h1>
+
+    <img src="logo.png" alt="logo" class="w-35 h-20"> <!-- Adjust the size as needed -->
+
+    <ul class="space-y-2">
+        <li class="collapse group">
+            <button
+                class="w-full flex items-center text-left py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                Attendance
+            </button>
+
+            <ul class="collapse-content space-y-2 pl-4">
+                <li><a href="#" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 section-link"
+                        data-target="adminAttend">Administrators</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 section-link"
+                        data-target="innovatorAttend">Innovators</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600section-link"
+                        data-target="allAttend">All</a></li>
+            </ul>
+        </li>
+    
+        <li class="collapse group">
+            <button
+                class="w-full flex items-center text-left py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white section-link"
+                data-target="adminMember">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                Members
+            </button>
+
+            <ul class="collapse-content space-y-2 pl-4">
+                <li><a href="#" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 section-link"
+                        data-target="adminMember">Administrators</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 section-link"
+                        data-target="innovatorMember">Innovators</a></li>
+                <li><a href="#" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 section-link"
+                        data-target="allMember">All</a></li>
+            </ul>
+        </li>
+    </ul>
+    <br>
+    <a href="company.html">
+        <button
+            class="w-full flex items-center text-left py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white section-link"
+            data-target="company">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-4 h-4 mr-2">
+                <!-- Added margin-right to create space between the icon and the text -->
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+            </svg>
+            Companies
+        </button>
+    </a>
+        <a href="#">
+            <button
+                class="w-full flex items-center text-left py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white section-link"
+                data-target="company">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-4 h-4 mr-2">
+                    <!-- Added margin-right to create space between the icon and the text -->
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                </svg>
+                Applications
+            </button>
+        </a>
+            <a  href="#">
+                <button
+                    class="w-full flex items-center text-left py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white section-link"
+                    data-target="company">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class="w-4 h-4 mr-2">
+                        <!-- Added margin-right to create space between the icon and the text -->
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                    </svg>
+                    Submissions
+                </button>
+            </a>
+
+    <a href="login.html" class="w-full block">
+        <button class="w-full flex items-center text-left py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+            </svg>
+            Logout
+        </button>
+    </a>
+
+
+</div>
+
+<!-- Main View Area -->
+<div class="flex-1 flex flex-col ml-64">
+
+    <!-- Top Bar -->
+    <div class="bg-white p-4 shadow flex justify-between items-center">
+        <button id="toggle-panel" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+            <!-- <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg> -->
+        </button>
+        <strong>
+            <h5>Welcome to National Ict Hub</h5>
+        </strong>
+        <div class="relative">
+            <button class="text-gray-600 hover:text-gray-800 focus:outline-none flex items-center">
+                <img src="adminImage.jpeg" alt="User" class="w-10 h-10 rounded-full mr-2">
+                <span class="hidden md:block">User</span>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg hidden">
+                <a href="settings.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                <a href="login.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                    Logout
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 space-y-6 main-content section-view bg-gray-200 p-4 shadow rounded" id="all">
+        <!-- <h2 class="text-3xl font-semibold">Main View Area</h2>
+            <p class="mt-4">This is where the main content of the dashboard will be displayed.</p> -->
+
+        <div class="flex space-x-6 p-1">
+            <div class="bg-white p-4 shadow rounded-lg flex-1 ">
+                <img src="adminImage.jpeg" alt="Administrators" class="w-full h-32 object-cover rounded mb-4">
+                <h3 class="text-xl font-semibold">Administrators</h3>
+                <p class="text-gray-600">30</p>
+            </div>
+            <div class="bg-white p-4 shadow rounded-lg flex-1 p-6">
+                <img src="innovatorImage.jpeg" alt="Innovators" class="w-full h-32 object-cover rounded mb-4">
+                <h3 class="text-xl font-semibold">Innovators</h3>
+                <p class="text-gray-600">20</p>
+            </div>
+            <div class="bg-white p-4 shadow rounded-lg flex-1 p-6">
+                <img src="companyImage.jpeg" alt="Companies" class="w-full h-32 object-cover rounded mb-4">
+                <h3 class="text-xl font-semibold">Companies</h3>
+                <p class="text-gray-600">40</p>
+            </div>
+        </div>
+
+
+        <!-- Attendance Statistics and Companies Divs -->
+        <div class="flex space-x-6 mt-6">
+            <div class="bg-white p-4 shadow rounded-lg flex-1"> <!-- Increased flex ratio for Attendance Statistics -->
+                <h3 class="text-xl font-semibold mb-4">Attendance Statistics</h3>
+                <hr>
+                <div id="myPlot" style="width:100%; height: 300px;"></div> <!-- Increased height -->
+            </div>
+
+            <div class="bg-white p-4 shadow rounded-lg flex-2">
+                <h3 class="text-xl font-semibold mb-4">Companies</h3>
+                <hr>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Name</th>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600">Industry
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-100">
+                                <td class="py-2 px-4 border-b">Company A</td>
+                                <td class="py-2 px-4 border-b">Tech</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="py-2 px-4 border-b">Company B</td>
+                                <td class="py-2 px-4 border-b">Finance</td>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <td class="py-2 px-4 border-b">Company C</td>
+                                <td class="py-2 px-4 border-b">Healthcare</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="flex justify-center mt-4">
+                        <a href="company.html"
+                            class="w-32 text-center text-white bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded inline-block">
+                            View All
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex space-x-6 mt-6">
+            <div class="bg-white p-4 shadow rounded-lg flex-1">
+                <h3 class="text-xl font-semibold mb-4">Attendance Today</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">
+                                    Name</th>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">
+                                    Time In</th>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">
+                                    Time Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-100">
+                                <td class="py-2 px-4 border-b">Alice Johnson</td>
+                                <td class="py-2 px-4 border-b">9:00 AM</td>
+                                <td class="py-2 px-4 border-b">5:00 PM</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="py-2 px-4 border-b">Bob Smith</td>
+                                <td class="py-2 px-4 border-b">9:30 AM</td>
+                                <td class="py-2 px-4 border-b">6:00 PM</td>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <td class="py-2 px-4 border-b">Charlie Brown</td>
+                                <td class="py-2 px-4 border-b">10:00 AM</td>
+                                <td class="py-2 px-4 border-b">7:00 PM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="flex justify-center mt-4">
+                        <button class="w-32">
+                            <a href="#"
+                                class="text-white bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded inline-block section-link"
+                                data-target="allAttend">View All</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 shadow rounded-lg flex-1">
+                <h3 class="text-xl font-semibold mb-4">Innovators</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">
+                                    Name</th>
+                                <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">
+                                    Project</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-100">
+                                <td class="py-2 px-4 border-b">Diana Prince</td>
+                                <td class="py-2 px-4 border-b">AI Research</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="py-2 px-4 border-b">Evan Williams</td>
+                                <td class="py-2 px-4 border-b">Blockchain</td>
+                            </tr>
+                            <tr class="bg-gray-100">
+                                <td class="py-2 px-4 border-b">Fiona Hill</td>
+                                <td class="py-2 px-4 border-b">Cybersecurity</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="flex justify-center mt-4">
+                        <button class="w-32">
+                            <a href="#"
+                                class="text-white bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded inline-block section-link"
+                                data-target="allMember">View All</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- One Div at the Bottom -->
+        <div class="bg-white p-4 shadow rounded-lg mt-6">
+            <h3 class="text-xl font-semibold mb-4">Administrators</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">Name
+                            </th>
+                            <th class="py-2 px-4 bg-gray-200 font-bold uppercase text-sm text-gray-600 text-left">
+                                Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-100">
+                            <td class="py-2 px-4 border-b">John Doe</td>
+                            <td class="py-2 px-4 border-b">Manager</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-2 px-4 border-b">Jane Smith</td>
+                            <td class="py-2 px-4 border-b">Developer</td>
+                        </tr>
+                        <tr class="bg-gray-100">
+                            <td class="py-2 px-4 border-b">Emily Davis</td>
+                            <td class="py-2 px-4 border-b">Designer</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-center mt-4">
+                    <button class="w-32">
+                        <a href="#"
+                            class="text-white bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded inline-block section-link"
+                            data-target="adminMember">View All</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--ATTENDANCE ADMIN-->
+
+
+
+
+    <!--ATTENDANCE-->
+
+    <div id="adminAttend" class="section-view relative w-full max-w-5xl my-20 mx-auto">
+        <!-- Title and Filter -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-gray-900">ATTENDANCE ADMINISTRATION</h2> <!-- Title in capital letters -->
+
+            <!-- Filter Container -->
+            <div class="filter-container flex gap-2 ml--32 right-30">
+                <select id="filter-column" class="filter-select px-2 py-1 border rounded">
+                    <option value="">Select Column to Filter</option>
+                    <option value="name">Name</option>
+                    <option value="company">Company</option>
+                    <option value="role">Role</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="address">Address</option>
+                </select>
+                <select id="filter-value" class="filter-select px-2 py-1 border rounded" disabled>
+                    <option value="">Select Value</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Name</th>
+                    <th scope="col" class="px-6 py-3">Company</th>
+                    <th scope="col" class="px-6 py-3">Role</th>
+                    <th scope="col" class="px-6 py-3">Phone</th>
+                    <th scope="col" class="px-6 py-3">Email</th>
+                </tr>
+            </thead>
+            <tbody id="member-adminAttend-table-body">
+                <!-- Table rows will go here -->
+            </tbody>
+        </table>
+
+
+        <!-- <div class="top-icons absolute top-0 right-0 mt-4 mr-4 flex space-x-4">
+        
+        <!-- <form action="/export" method="POST">
+            <button type="submit" title="Export Files" class="flex items-center px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600">
+                <i class="bi bi-file-earmark-arrow-down mr-2"></i>
+                <span>Export</span>
+            </button>
+        </form>
+        
+        
+        <a href="add_admin.html" title="Add Admin" class="flex items-center px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600">
+            <i class="bi bi-person-plus mr-2"></i>
+            <span>Add Admin</span>
+        </a>
+    </div> -->
+    </div>
+
+    <!--all attendance-->
+    <div id="allAttend" class="section-view w-full max-w-5xl my-20 mx-auto">
+        <!-- Title and Filter -->
+        <div class="relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold text-gray-900">ALL ATTENDANCE</h2> <!-- Title in capital letters -->
+
+                <!-- Filter Container -->
+                <div class="filter-container flex gap-2">
+                    <select id="filter-column-all" class="filter-select px-2 py-1 border rounded">
+                        <option value="">Select Column to Filter</option>
+                        <option value="name">Name</option>
+                        <option value="company">Company</option>
+                        <option value="role">Role</option>
+                        <option value="phone">Phone</option>
+                        <option value="email">Email</option>
+                        <option value="address">Address</option>
+                    </select>
+                    <input type="text" id="filter-value-all" class="filter-input px-2 py-1 border rounded"
+                        placeholder="Filter Value">
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Name</th>
+                            <th scope="col" class="px-6 py-3">Company</th>
+                            <th scope="col" class="px-6 py-3">Role</th>
+                            <th scope="col" class="px-6 py-3">Phone</th>
+                            <th scope="col" class="px-6 py-3">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="member-allAttend-table-body">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Top Icons -->
+            <div class="top-icons absolute top-0 right-0 mt-4 mr-4 flex space-x-4">
+                <!-- Export Button -->
+                <form action="/export" method="POST">
+                    <button type="submit" title="Export Files"
+                        class="flex items-center px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600">
+                        <svg class="w-4 h-4 fill-current mr-2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M3 8a5 5 0 1110 0 1 1 0 012 0 7 7 0 10-14 0 1 1 0 012 0zM10 2a8 8 0 100 16 1 1 0 112 0 10 10 0 110-20 1 1 0 112 0 12 12 0 100 24 1 1 0 112 0 14 14 0 110-28 1 1 0 112 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>Export</span>
+                    </button>
+                </form>
+
+                <!-- Add Admin Button -->
+                <a href="add_admin.html" title="Add Admin"
+                    class="flex items-center px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600">
+                    <svg class="w-4 h-4 fill-current mr-2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M3 8a5 5 0 1110 0 1 1 0 012 0 7 7 0 10-14 0 1 1 0 012 0zM10 2a8 8 0 100 16 1 1 0 112 0 10 10 0 110-20 1 1 0 112 0 12 12 0 100 24 1 1 0 112 0 14 14 0 110-28 1 1 0 112 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span>Add Admin</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Innovator-->
+    <div id="innovatorAttend" class="section-view relative w-full max-w-5xl my-20 mx-auto">
+        <!-- Title and Filter -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-gray-900">INNOVATOR ATTENDANCE</h2> <!-- Title in capital letters -->
+
+            <!-- Filter Container -->
+            <div class="filter-container flex gap-2">
+                <select id="filter-column-innovator" class="filter-select px-2 py-1 border rounded">
+                    <option value="">Select Column to Filter</option>
+                    <option value="name">Name</option>
+                    <option value="company">Company</option>
+                    <option value="role">Role</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="address">Address</option>
+                </select>
+                <input type="text" id="filter-value-innovator" class="filter-input px-2 py-1 border rounded"
+                    placeholder="Filter Value">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Company</th>
+                        <th scope="col" class="px-6 py-3">Role</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="member-innovator-table-body">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!--MEMBERS-->
+    <!--Admin-->
+    <div id="adminMember" class="section-view relative w-full max-w-5xl my-20 ml-auto">
+        <!-- Title and Filter -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-gray-900">MEMBER ADMINISTRATION</h2> <!-- Title in capital letters -->
+
+            <!-- Filter Container -->
+            <div class="filter-container flex gap-2 ml-auto">
+                <select id="filter-column-adminMember" class="filter-select px-2 py-1 border rounded">
+                    <option value="">Select Column to Filter</option>
+                    <option value="name">Name</option>
+                    <option value="company">Company</option>
+                    <option value="role">Role</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="address">Address</option>
+                </select>
+                <input type="text" id="filter-value-adminMember" class="filter-input px-2 py-1 border rounded"
+                    placeholder="Filter Value">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Company</th>
+                        <th scope="col" class="px-6 py-3">Role</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="member-adminMember-table-body">
+                    <!-- Table rows will go here -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- All Member Section -->
+    <div id="allMember" class="section-view w-full max-w-5xl my-20 ml-auto">
+        <!-- Title and Filter -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-gray-900">ALL MEMBER ADMINISTRATION</h2>
+
+            <!-- Filter Container -->
+            <div class="filter-container flex gap-2 ml-auto">
+                <select id="filter-column-allMember" class="filter-select px-2 py-1 border rounded">
+                    <option value="">Select Column to Filter</option>
+                    <option value="name">Name</option>
+                    <option value="company">Company</option>
+                    <option value="role">Role</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="address">Address</option>
+                </select>
+                <input type="text" id="filter-value-allMember" class="filter-input px-2 py-1 border rounded"
+                    placeholder="Filter Value">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Company</th>
+                        <th scope="col" class="px-6 py-3">Role</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="member-allMember-table-body">
+
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <!-- Innovator Member Section -->
+    <div id="innovatorMember" class="section-view w-full max-w-5xl my-20 ml-auto">
+        <!-- Title and Filter -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-gray-900">INNOVATOR MEMBER ADMINISTRATION</h2>
+
+            <!-- Filter Container -->
+            <div class="filter-container flex gap-2 ml-auto">
+                <select id="filter-column-innovatorMember" class="filter-select px-2 py-1 border rounded">
+                    <option value="">Select Column to Filter</option>
+                    <option value="name">Name</option>
+                    <option value="company">Company</option>
+                    <option value="role">Role</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                    <option value="address">Address</option>
+                </select>
+                <input type="text" id="filter-value-innovatorMember" class="filter-input px-2 py-1 border rounded"
+                    placeholder="Filter Value">
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Company</th>
+                        <th scope="col" class="px-6 py-3">Role</th>
+                        <th scope="col" class="px-6 py-3">Phone</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="member-innovatorMember-table-body">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    </body>
+    <script>
+        document.getElementById('toggle-panel').addEventListener('click', function () {
+            const panel = document.getElementById('side-panel');
+            panel.classList.toggle('hidden');
+        });
+
+        const userButton = document.querySelector('.relative > button');
+        const dropdown = document.querySelector('.relative > div');
+        userButton.addEventListener('click', function () {
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Data
+        // Plotly chart
+        const xArray = ["Jan", "Feb", "March", "April", "May"];
+        const yArray = [12, 20, 44, 50, 60];
+
+        const data = [{
+            x: xArray,
+            y: yArray,
+            type: "bar",
+            orientation: "v",
+            marker: { color: "rgba(0,0,255)" }
+        }];
+
+        const layout = { title: "Attendance by Month" };
+
+        Plotly.newPlot("myPlot", data, layout);
+        //FOR THE INNOVATORS attendance
+        const links = document.querySelectorAll(".section-link")
+        const sections = document.querySelectorAll(".section-view")
+
+        console.log(sections)
+
+        links.forEach((link) => {
+            link.addEventListener("click", function (event) {
+                const targetId = this.getAttribute("data-target")
+                event.preventDefault()
+                showSection(targetId)
+
+            })
+        })
+
+        function showSection(targetId) {
+            sections.forEach(section => {
+                section.classList.toggle("show", section.id === targetId);
+
+
+            })
+        }
+
+        showSection("all")
+
+        //admin table 
+        //attendance admin 
+        const adminattend = [
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+
+
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableBody = document.getElementById('member-adminAttend-table-body');
+
+            adminattend.forEach(admin => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div class="flex items-center">
+                            <img class="w-10 h-10 rounded-full mr-4" src="adminImage.jpeg" alt="${admin.name}">
+                            <div>${admin.name}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.company}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.email}</td>
+                    
+                `;
+
+                tableBody.appendChild(row);
+            });
+        });
+
+        //innovators
+
+        //attendance
+        const allattendTable = [
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+
+
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableBody = document.getElementById('member-allAttend-table-body');
+
+            allattendTable.forEach(admin => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div class="flex items-center">
+                            <img class="w-10 h-10 rounded-full mr-4" src="adminImage.jpeg" alt="${admin.name}">
+                            <div>${admin.name}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.company}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.email}</td>
+                    
+                `;
+
+                tableBody.appendChild(row);
+            });
+        });
+
+        //all attendance
+        //admin table 
+        //attendance admin 
+        const innovatorattend = [
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+
+
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableBody = document.getElementById('member-innovator-table-body');
+
+            innovatorattend.forEach(admin => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div class="flex items-center">
+                            <img class="w-10 h-10 rounded-full mr-4" src="adminImage.jpeg" alt="${admin.name}">
+                            <div>${admin.name}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.company}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.email}</td>
+                    
+                `;
+
+                tableBody.appendChild(row);
+            });
+        });
+
+        //MEMBERS
+        //ADMIN
+        //attendance admin 
+        const adminMember = [
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+
+
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableBody = document.getElementById('member-adminMember-table-body');
+
+            adminMember.forEach(admin => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div class="flex items-center">
+                            <img class="w-10 h-10 rounded-full mr-4" src="adminImage.jpeg" alt="${admin.name}">
+                            <div>${admin.name}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.company}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.email}</td>
+                    
+                `;
+
+                tableBody.appendChild(row);
+            });
+        });
+        //INNOVATOR
+        //attendance admin 
+        const innovatorMember = [
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+
+
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableBody = document.getElementById('member-innovatorMember-table-body');
+
+            innovatorMember.forEach(admin => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div class="flex items-center">
+                            <img class="w-10 h-10 rounded-full mr-4" src="adminImage.jpeg" alt="${admin.name}">
+                            <div>${admin.name}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.company}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.email}</td>
+                    
+                `;
+
+                tableBody.appendChild(row);
+            });
+        });
+        //ALL
+        //attendance admin 
+        const allMember = [
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+            { id: '1', name: 'Neil Sims', company: 'Development', role: 'React Developer', phone: '+1234567890', email: 'prossienabbona20@222gmail.com' },
+
+
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tableBody = document.getElementById('member-allMember-table-body');
+
+            allMember.forEach(admin => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <div class="flex items-center">
+                            <img class="w-10 h-10 rounded-full mr-4" src="adminImage.jpeg" alt="${admin.name}">
+                            <div>${admin.name}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.company}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.role}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.phone}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${admin.email}</td>
+                    
+                `;
+
+                tableBody.appendChild(row);
+            });
+        });
+    </script>
+
+
+</html>

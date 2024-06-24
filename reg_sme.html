@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIIH Entry Form - ICT SME Hot Desk</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">National ICT Innovation Hub Entry Form - ICT SME Hot Desk</h1>
+
+        <form>
+            <!-- Applicant Contact Details -->
+            <h2 class="text-xl font-semibold mb-2">Applicant Contact Details</h2>
+
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-medium">Name</label>
+                <input type="text" id="name"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 font-medium">Phone Number</label>
+                <input type="text" id="phone"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium">E-mail</label>
+                <input type="email" id="email"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Product/Service Description -->
+            <h2 class="text-xl font-semibold mb-2">Product/Service Description</h2>
+
+            <div class="mb-4">
+                <label for="productName" class="block text-gray-700 font-medium">Name of ICT Product/Service</label>
+                <input type="text" id="productName"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="incorporationYear" class="block text-gray-700 font-medium">Indicate Year of
+                    Incorporation</label>
+                <input type="text" id="incorporationYear"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="ursbRegistration" class="block text-gray-700 font-medium">Indicate URSB Registration
+                    Number</label>
+                <input type="text" id="ursbRegistration"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="uraRegistration" class="block text-gray-700 font-medium">Is the company registered with URA?
+                    If yes, please indicate the Tax Identification Number</label>
+                <input type="text" id="uraRegistration"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="mentorSupport" class="block text-gray-700 font-medium">Is the company willing to provide
+                    mentor support to members of the hub?</label>
+                <input type="text" id="mentorSupport"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Requirements -->
+            <h2 class="text-xl font-semibold mb-2">Requirements</h2>
+
+            <div class="mb-4">
+                <label for="requirements" class="block text-gray-700 font-medium">Kindly list below the requirements or
+                    support that you seek from the National ICT Innovation Hub</label>
+                <textarea id="requirements" rows="3"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end">
+                <button type="button"
+                    class="px-6 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"                     onclick="window.location.href='waiting.html'">
+Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

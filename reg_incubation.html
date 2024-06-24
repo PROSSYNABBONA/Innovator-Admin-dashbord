@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIIH Entry Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">National ICT Innovation Hub Entry Form</h1>
+
+        <form>
+            <!-- Applicant Contact Details -->
+            <h2 class="text-xl font-semibold mb-2">Applicant Contact Details</h2>
+            
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-medium">Name</label>
+                <input type="text" id="name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 font-medium">Phone Number</label>
+                <input type="text" id="phone" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium">E-mail</label>
+                <input type="email" id="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Product/Service Description -->
+            <h2 class="text-xl font-semibold mb-2">Product/Service Description</h2>
+            
+            <div class="mb-4">
+                <label for="productName" class="block text-gray-700 font-medium">Name of Product/Service at MVP Stage</label>
+                <input type="text" id="productName" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="sectors" class="block text-gray-700 font-medium">List sector(s) that your product is serving</label>
+                <textarea id="sectors" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="problems" class="block text-gray-700 font-medium">Problem(s) addressed by the product/service</label>
+                <textarea id="problems" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="solution" class="block text-gray-700 font-medium">Describe how the product/service/idea will address the problem(s) above</label>
+                <textarea id="solution" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="competitors" class="block text-gray-700 font-medium">Briefly describe competitors and your key advantage over the competition</label>
+                <textarea id="competitors" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="marketPotential" class="block text-gray-700 font-medium">Briefly describe your product/service market potential (e.g., reach number of clients, transactions, etc.)</label>
+                <textarea id="marketPotential" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <!-- Additional Company Information -->
+            <h2 class="text-xl font-semibold mb-2">Additional Company Information</h2>
+            
+            <div class="mb-4">
+                <label for="technicalDocumentation" class="block text-gray-700 font-medium">Do you have technical documentation that supports you in delivering your product/service?</label>
+                <textarea id="technicalDocumentation" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="ursbRegistration" class="block text-gray-700 font-medium">Is the company registered at URSB? If yes, please indicate the Business Registration Number</label>
+                <input type="text" id="ursbRegistration" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="uraRegistration" class="block text-gray-700 font-medium">Is the company registered with URA? If yes, please indicate the Tax Identification Number</label>
+                <input type="text" id="uraRegistration" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="pdpoRegistration" class="block text-gray-700 font-medium">Is the company registered with Personal Data Protection Office? If yes, please indicate the PDPO Registration Number</label>
+                <input type="text" id="pdpoRegistration" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="funding" class="block text-gray-700 font-medium">Has the company raised any funding/investment? If yes, kindly indicate the amount</label>
+                <input type="text" id="funding" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Team Composition -->
+            <h2 class="text-xl font-semibold mb-2">Team Composition</h2>
+
+            <div class="mb-4">
+                <label for="teamName" class="block text-gray-700 font-medium">Name</label>
+                <input type="text" id="teamName" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="role" class="block text-gray-700 font-medium">Role</label>
+                <input type="text" id="role" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mb-4">
+                <label for="roleDescription" class="block text-gray-700 font-medium">Brief Description of the role especially on technology and functionality</label>
+                <textarea id="roleDescription" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <!-- Requirements -->
+            <h2 class="text-xl font-semibold mb-2">Requirements</h2>
+            
+            <div class="mb-4">
+                <label for="requirements" class="block text-gray-700 font-medium">Kindly list below the requirements or support that you seek from the National ICT Innovation Hub</label>
+                <textarea id="requirements" rows="3" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="button" class="px-6 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"onclick="window.location.href='waiting.html'">
+Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

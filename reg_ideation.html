@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-xl font-bold">Applicant Contact Details</h1>
+            <div class="flex flex-col space-y-4 mt-4">
+                <div class="flex flex-col space-y-1">
+                    <label for="name" class="text-sm font-medium">Name</label>
+                    <input id="name" type="text"
+                        class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="flex flex-col space-y-1">
+                    <label for="phone" class="text-sm font-medium">Phone number</label>
+                    <input id="phone" type="tel"
+                        class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="flex flex-col space-y-1">
+                    <label for="email" class="text-sm font-medium">E-mail</label>
+                    <input id="email" type="email"
+                        class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+            </div>
+            <h1 class="text-xl font-bold mt-8">Product/Service Description</h1>
+            <div class="flex flex-col space-y-4 mt-4">
+                <div class="flex flex-col space-y-1">
+                    <label for="product" class="text-sm font-medium">Name of product/service/idea</label>
+                    <input id="product" type="text"
+                        class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="flex flex-col space-y-1">
+                    <label for="problem" class="text-sm font-medium">Problem(s) addressed by the
+                        product/service/idea:</label>
+                    <textarea id="problem" rows="4"
+                        class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex flex-col space-y-1">
+                    <label for="solution" class="text-sm font-medium">Describe how the product/service/idea will address
+                        the
+                        problem(s) above:</label>
+                    <textarea id="solution" rows="4"
+                        class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"></textarea>
+                </div>
+            </div>
+            <h1 class="text-xl font-bold mt-8">Team Composition</h1>
+            <div class="flex flex-col space-y-4 mt-4">
+                <div class="flex space-x-4">
+                    <div class="w-full flex flex-col space-y-1">
+                        <label for="teamName1" class="text-sm font-medium">Name</label>
+                        <input id="teamName1" type="text"
+                            class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div class="w-full flex flex-col space-y-1">
+                        <label for="teamRole1" class="text-sm font-medium">Role</label>
+                        <input id="teamRole1" type="text"
+                            class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div class="w-full flex flex-col space-y-1">
+                        <label for="teamDesc1" class="text-sm font-medium">Brief Description of the role</label>
+                        <textarea id="teamDesc1" rows="2"
+                            class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+                <div class="flex space-x-4 mt-4">
+                    <div class="w-full flex flex-col space-y-1">
+                        <label for="teamName2" class="text-sm font-medium">Name</label>
+                        <input id="teamName2" type="text"
+                            class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div class="w-full flex flex-col space-y-1">
+                        <label for="teamRole2" class="text-sm font-medium">Role</label>
+                        <input id="teamRole2" type="text"
+                            class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                    </div>
+                    <div class="w-full flex flex-col space-y-1">
+                        <label for="teamDesc2" class="text-sm font-medium">Brief Description of the role</label>
+                        <textarea id="teamDesc2" rows="2"
+                            class="rounded-md border border-gray-400 px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"></textarea>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-xl font-semibold mt-8">Requirements</h2>
+            <div class="mt-4">
+                <label for="requirements" class="block text-gray-700 font-medium">Kindly list below the requirements or
+                    support that you seek from the National ICT Innovation Hub</label>
+                <textarea id="requirements" rows="3"
+                    class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button type="button"
+                    class="px-4 py-2 rounded-md bg-blue-500 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"onclick="window.location.href='waiting.html'">Submit
+                    Application</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

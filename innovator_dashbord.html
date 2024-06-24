@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovator Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@heroicons/vue@v1.0.0/lib/index.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex min-h-screen">
+        <!-- Side Panel -->
+        <div class="bg-blue-900 text-white w-64 space-y-6 py-7 px-2">
+            <h1 class="text-2xl font-bold text-center">Dashboard</h1>
+            <nav>
+                <a href="submissions.html"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 7l9 9m0 0l9-9m-9 9V3"></path>
+                    </svg>
+                    Submissions
+                </a>
+                <a href="attendance.html"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1">
+                        </path>
+                    </svg>
+                    Attendance
+                </a>
+                <a href="pulse_check.html"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Pulse Checks
+                </a>
+                <a href="index.html"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1">
+                        </path>
+                    </svg>
+                    Logout
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-10 text-gray-700">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold">Innovator Dashboard</h2>
+                <div class="flex items-center">
+                    <img src="adminImage.jpeg" alt="Innovator" class="w-10 h-10 rounded-full">
+                    <span class="ml-2 font-semibold">John Doe</span>
+                </div>
+            </div>
+
+            <!-- Attendance Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Attendance</h3>
+                    <p>Track the attendance of all sessions. Stay updated with the latest attendance records and ensure
+                        your participation is accurately logged.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Attendance Statistics</h3>
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Upcoming Events</h3>
+                    <p>Stay informed about all upcoming events. Never miss a chance to engage and grow your network by
+                        attending these important gatherings.</p>
+                </div>
+            </div>
+
+            <!-- Other Sections -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Project Updates</h3>
+                    <p>Get the latest updates on ongoing projects. Stay informed about milestones, deadlines, and
+                        progress to ensure project success.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Notifications</h3>
+                    <p>Keep track of all important notifications. Stay updated with the latest announcements and ensure
+                        you are always in the loop.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Resources</h3>
+                    <p>Access a wide range of resources to help you succeed. From tutorials to documentation, find
+                        everything you need to enhance your skills.</p>
+                </div>
+            </div>
+
+            <!-- Additional Content Sections -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Latest Innovations</h3>
+                    <p>Discover the latest innovations in the industry. Stay ahead of the curve by keeping up with
+                        cutting-edge technology and ideas.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Team Collaborations</h3>
+                    <p>Collaborate with your team effectively. Find out about current collaborations, share ideas, and
+                        work together to achieve common goals.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Industry News</h3>
+                    <p>Stay updated with the latest news in the industry. From market trends to new regulations, get all
+                        the information you need to stay informed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Bar graph using Chart.js
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Attendance',
+                    data: [12, 19, 3, 5, 2, 3, 7],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255,1)',
+                                                'rgba(255, 159, 64, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+                                                </script>
+    </body>
+    
+    </html>
